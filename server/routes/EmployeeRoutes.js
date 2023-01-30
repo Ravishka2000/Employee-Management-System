@@ -6,5 +6,6 @@ const router = express.Router();
 router.post('/create', EmployeeControllers.createEmployee);
 router.get('/all-details', EmployeeControllers.getAllEmployees);
 router.put('/update/:id', EmployeeControllers.updateEmployee);
+router.delete('/delete/:id', EmployeeControllers.deleteEmployee);
 
 export default router;
