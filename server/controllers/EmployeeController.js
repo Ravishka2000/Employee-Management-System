@@ -18,9 +18,9 @@ const createEmployee = async (req, res) => {
 
 const getAllEmployees = async (req, res) => {
     try {
-        const employee = await Employee.find();
+        const employees = await Employee.find();
         res.status(200).json({
-            employee
+            employees
         });
     } catch (err) {
         res.status(404).json({
