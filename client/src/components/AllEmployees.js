@@ -9,6 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Link } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -19,7 +20,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
     },
-  }));
+}));
   
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
@@ -28,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     '&:last-child td, &:last-child th': {
       border: 0,
     },
-  }));
+}));
 
 const AllEmployees = () => {
 
@@ -60,8 +61,7 @@ const AllEmployees = () => {
               console.error(err);
             });
         }
-      };
-    
+    };
 
     return (
         <Container maxWidth="xl" >
@@ -83,8 +83,12 @@ const AllEmployees = () => {
                                 <StyledTableCell align='center' component="th" scope="row">{employee.eId}</StyledTableCell>
                                 <StyledTableCell align="center">{employee.eName}</StyledTableCell>
                                 <StyledTableCell align="center">{employee.eAge}</StyledTableCell>
-                                <StyledTableCell align="right"><Button variant='contained' color='success'>Update</Button></StyledTableCell>
-                                <StyledTableCell align="left"><Button variant='contained' color='error'  onClick={() => handleDelete(employee._id)}>Delete</Button></StyledTableCell>
+                                <StyledTableCell align="right">
+                                    <Button variant='contained' color='success' LinkComponent={Link} to={`/update/${employee._id}`}>Update</Button>
+                                </StyledTableCell>
+                                <StyledTableCell align="left">
+                                    <Button variant='contained' color='error'  onClick={() => handleDelete(employee._id)}>Delete</Button>
+                                </StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>

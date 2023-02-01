@@ -29,6 +29,20 @@ const getAllEmployees = async (req, res) => {
     };
 };
 
+const getEmployee = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const employee = await Employee.findById(id);
+        res.status(200).json({
+            employee
+        });
+    } catch (error) {
+        res.status(404).json({
+            message: error.message
+        });
+    }
+}
+
 const updateEmployee = async (req, res) => {
     try {
         const id = req.params.id;
@@ -62,6 +76,7 @@ const deleteEmployee = async (req, res) => {
 export default {
     createEmployee,
     getAllEmployees,
+    getEmployee,
     updateEmployee,
     deleteEmployee
 };
