@@ -34,7 +34,7 @@ const AddEmployee = () => {
             setOpen(true);
             setTimeout(() => {
                 navigate('/all')
-            }, 2000)
+            }, 1000)
         })
         .catch((err) => {
             console.log(err);

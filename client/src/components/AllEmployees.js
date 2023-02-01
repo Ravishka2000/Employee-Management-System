@@ -34,18 +34,34 @@ const AllEmployees = () => {
 
     const [employees, setEmployees] = useState([]);
 
+    function getAllEmployees(){
+        axios.get("http://localhost:8090/all-details")
+        .then((res)=>{
+            setEmployees(res.data.employees)
+        })
+        .catch((err)=>{
+            console.error(err);
+        })
+    };
+
     useEffect(() => {
-        function getAllEmployees(){
-            axios.get("http://localhost:8090/all-details")
-            .then((res)=>{
-                setEmployees(res.data.employees)
-            })
-            .catch((err)=>{
-                console.error(err);
-            })
-        }
         getAllEmployees();
-    }, [])
+    }, []);
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete this employee?")) {
+          axios
+            .delete(`http://localhost:8090/delete/${id}`)
+            .then((res) => {
+              console.log(res.data.message);
+              getAllEmployees();
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+      };
+    
 
     return (
         <Container maxWidth="xl" >
@@ -68,7 +84,7 @@ const AllEmployees = () => {
                                 <StyledTableCell align="center">{employee.eName}</StyledTableCell>
                                 <StyledTableCell align="center">{employee.eAge}</StyledTableCell>
                                 <StyledTableCell align="right"><Button variant='contained' color='success'>Update</Button></StyledTableCell>
-                                <StyledTableCell align="left"><Button variant='contained' color='error'>Delete</Button></StyledTableCell>
+                                <StyledTableCell align="left"><Button variant='contained' color='error'  onClick={() => handleDelete(employee._id)}>Delete</Button></StyledTableCell>
                             </StyledTableRow>
                         ))}
                     </TableBody>
