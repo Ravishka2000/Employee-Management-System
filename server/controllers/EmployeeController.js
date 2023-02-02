@@ -73,10 +73,24 @@ const deleteEmployee = async (req, res) => {
     };
 };
 
+const getEmployeeCount = async (req, res) => {
+    try {
+        const employeeCount = await Employee.countDocuments();
+        res.status(200).json({
+            employeeCount
+        });
+    } catch (err) {
+        res.status(500).json({
+            message: err.message
+        });
+    }
+}
+
 export default {
     createEmployee,
     getAllEmployees,
     getEmployee,
     updateEmployee,
-    deleteEmployee
+    deleteEmployee,
+    getEmployeeCount
 };

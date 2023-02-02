@@ -10,6 +10,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -63,8 +66,32 @@ const AllEmployees = () => {
         }
     };
 
+    const [count, setCount] = useState();    
+
+    useEffect(() => {
+        async function getCount() {
+            axios
+              .get("http://localhost:8090/count")
+              .then((res) => setCount(res.data.employeeCount))
+              .catch(err => console.error(err));
+        }
+        getCount();
+    },[])
+
     return (
         <Container maxWidth="xl" >
+            <Container maxWidth="xl" sx={{background:"#fafafa"}}>
+            <Grid mt={4} container spacing={2} margin="auto" >
+                <Grid xs={12} >
+                    <Card >
+                        <CardContent>
+                            <Typography align='center' fontWeight={1000} fontSize={28} fontFamily="serif">Total Employees</Typography>
+                            <Typography align='center' fontWeight={1000} fontSize={26}>{count}</Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        </Container>
             <Typography variant='h3' align='center' mt={3}>ALL &nbsp; EMPLOYEES</Typography>
             <Divider/>
             <TableContainer component={Paper} sx={{my:5, maxWidth: "md", mx: "auto"}}>
