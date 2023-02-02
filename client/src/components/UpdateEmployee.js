@@ -29,7 +29,7 @@ const UpdateEmployee = () => {
 
     useEffect(() => {
         getEmployee();
-    }, []);
+    });
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -51,7 +51,7 @@ const UpdateEmployee = () => {
             setSeverity("success");
             setOpen(true);
             setTimeout(() => {
-                navigate('/all')
+                navigate('/')
             }, 1000)
         })
         .catch((err) => {

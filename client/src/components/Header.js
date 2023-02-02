@@ -19,9 +19,7 @@ const Header = () => {
                     </Typography>
                     <Tabs sx={{ml: "auto"}} textColor='inherit' value={value} onChange={handleChange} centered indicatorColor='inherit'>
                         <Tab LinkComponent={NavLink} to="/" label='Home'/>
-                        <Tab LinkComponent={NavLink} to="/all" label='Employees'/>
                         <Tab LinkComponent={NavLink} to="/add" label='Add Employee'/>
-                        <Tab LinkComponent={NavLink} to="" label='About Us'/>
                     </Tabs>
                 </Toolbar>
             </AppBar>

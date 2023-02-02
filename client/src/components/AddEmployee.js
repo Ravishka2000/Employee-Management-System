@@ -33,7 +33,7 @@ const AddEmployee = () => {
             setSeverity("success");
             setOpen(true);
             setTimeout(() => {
-                navigate('/all')
+                navigate('/')
             }, 1000)
         })
         .catch((err) => {
@@ -45,7 +45,7 @@ const AddEmployee = () => {
     };
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{mb: 5}}>
             <Stack component="form" spacing={4} sx={{m: "auto", maxWidth: "sm", padding: 8, mt: 8, boxShadow: 5}} bgcolor="#fafafa">
                 <Typography variant='h3' align='center' marginBottom={2}>NEW &nbsp; EMPLOYEE</Typography>
                 <TextField variant='outlined' value={employeeId} onChange={(e)=> setEmployeeId(e.target.value)} label="Employee ID"/>

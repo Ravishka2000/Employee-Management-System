@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Container, Divider, Typography } from '@mui/material';
+import { Button, Divider, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
@@ -79,11 +79,10 @@ const AllEmployees = () => {
     },[])
 
     return (
-        <Container maxWidth="xl" >
-            <Container maxWidth="xl" sx={{background:"#fafafa"}}>
-            <Grid mt={4} container spacing={2} margin="auto" >
-                <Grid xs={12} >
-                    <Card >
+        <>
+            <Grid container spacing={2} marginY={5} >
+                <Grid xs={6} xsOffset={3} md={4} mdOffset={4}>
+                    <Card>
                         <CardContent>
                             <Typography align='center' fontWeight={1000} fontSize={28} fontFamily="serif">Total Employees</Typography>
                             <Typography align='center' fontWeight={1000} fontSize={26}>{count}</Typography>
@@ -91,7 +90,6 @@ const AllEmployees = () => {
                     </Card>
                 </Grid>
             </Grid>
-        </Container>
             <Typography variant='h3' align='center' mt={3}>ALL &nbsp; EMPLOYEES</Typography>
             <Divider/>
             <TableContainer component={Paper} sx={{my:5, maxWidth: "md", mx: "auto"}}>
@@ -121,7 +119,7 @@ const AllEmployees = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Container>
+        </>
     )
 };
 
